@@ -1,2 +1,3 @@
-name = "littiegame"
-directory = "./dist"
+name = "littiegame";
+compatible_date = "2025-12-01";
+directory = "/public/assets";
