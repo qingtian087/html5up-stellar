@@ -1,7 +1,7 @@
 name = "littiegame"
+type = "javascript"  # 或 "typescript" / "rust"
+main = "index.js"     # 入口文件路径
 
-compatible_date = "2025-12-01"
-
-compatibility_date = "2025-12-01"
-
-directory = "./public"
+# 可选：静态资产目录（与 `--assets` 参数一致）
+[assets]
+directory = "./dist"
