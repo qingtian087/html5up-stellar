@@ -1,6 +1,6 @@
 name = "littiegame"
 type = "javascript"  # 或 "typescript" / "rust"
-main = "index.html"     # 入口文件路径
+main = "index.js"     # 入口文件路径
 
 # 可选：静态资产目录（与 `--assets` 参数一致）
 [assets]
