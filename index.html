@@ -8,23 +8,23 @@
 	<head>
 		<title>War of Sticks - Stickman Fighting Game | Play Online Action Game</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!-- 关键：添加viewport确保移动端正确适配 -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<meta name="google-site-verification" content="Lt05fKBOZaasfbWBKGIsoHlynRDD2DnWa2gehOfnxBs" />
 		<meta name="keywords" content="War of Sticks, stickman game, fighting game, action game, online game, stickman fighting, PvP game, battle game">
 		<meta name="description" content="Play War of Sticks, a fast-paced stickman fighting game. Choose your unique stick warrior, master combos, battle in dynamic arenas. Featuring single-player campaigns and real-time PvE.">
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 <style>
-	
+  /* 基础容器样式 - 统一控制居中、宽度 */
   .iframe-container {
     position: relative;
     width: 100%;
-    max-width: 800px; /* 最大宽度 */
-    margin: 0 auto; /* 居中显示 */
-    padding-top: 75%; /* 4:3 比例 (height/width = 3/4 = 0.75) */
-    /* 如果游戏是16:9比例，使用56.25% (9/16 = 0.5625) */
+    margin: 0 auto; /* 水平居中 */
+    overflow: hidden; /* 防止内容溢出 */
   }
-  
+
+  /* 响应式iframe核心样式 */
   .responsive-iframe {
     position: absolute;
     top: 0;
@@ -32,23 +32,53 @@
     width: 100%;
     height: 100%;
     border: 0;
+    /* 关键：让iframe内部内容自适应容器（需配合内部页面响应式） */
+    transform: scale(1);
+    transform-origin: top left;
   }
-  
-  /* 针对不同屏幕尺寸的微调 */
-  @media (max-width: 768px) {
+
+  /* 电脑端（宽度>768px）：固定16:9比例 */
+  @media (min-width: 769px) {
     .iframe-container {
-      padding-top: 80%; /* 在移动设备上稍作调整 */
+      max-width: 1200px; /* 电脑端最大宽度，可调整 */
+      padding-top: 56.25%; /* 16:9比例 = 9/16 = 0.5625 */
       padding-left: 2%;
       padding-right: 2%;
     }
   }
-  
-  @media (max-width: 480px) {
+
+  /* 平板/大屏手机（768px≥宽度>480px）：过渡比例 */
+  @media (max-width: 768px) and (min-width: 481px) {
     .iframe-container {
-      padding-top: 85%; /* 在小屏幕设备上进一步调整 */
+      padding-top: 75%; /* 4:3比例，介于16:9和竖屏之间 */
+      padding-left: 3%;
+      padding-right: 3%;
     }
   }
-  
+
+  /* 手机端（宽度≤480px）：移动端竖屏比例 */
+  @media (max-width: 480px) {
+    .iframe-container {
+      padding-top: 177.78%; /* 9:16竖屏比例 = 16/9 ≈ 1.7778（适合手机全屏） */
+      padding-left: 0;
+      padding-right: 0;
+      max-width: 100%; /* 占满手机屏幕宽度 */
+    }
+    /* 可选：如果内部页面需要缩放适配，可添加以下样式 */
+    .responsive-iframe {
+      /* 若内部页面未做响应式，可通过scale微调（根据实际情况调整数值） */
+      /* transform: scale(0.95); */
+    }
+  }
+
+  /* 优化主体内容间距，适配移动端 */
+  main {
+    padding: 20px 15px; /* 移动端增加左右内边距，避免贴边 */
+  }
+
+  .bg-white {
+    padding: 15px; /* 调整卡片内边距，适配小屏幕 */
+  }
 </style>
 	</head>
 	<body class="is-preload">
@@ -60,22 +90,20 @@
 					<header id="header" class="alt">
 						<span class="logo"><img src="images/logo.svg" alt="" /></span>
 						<h1>War of Sticks</h1>
-						<p>Game of War<br />
-						
+						<p>Game of War</p> <!-- 修复原代码多余的<br>导致的空白 -->
 					</header>
 
-				<!-- Nav -->
-					
-
 				<!-- Main -->
-				 <main class="max-w-7xl mx-auto px-4 py-6">
+				<main>
 					<div class="bg-white rounded-lg shadow-lg p-4 mb-8">
-						<div class="aspect-w-16 aspect-h-9">
-							<div class="iframe-container">
-								<iframe class="responsive-iframe" src="warofsticks/index.html"></iframe>
-							</div>
+						<!-- 移除多余的aspect容器，直接使用iframe-container控制比例 -->
+						<div class="iframe-container">
+							<iframe class="responsive-iframe" 
+									src="warofsticks/index.html"
+									<!-- 可选：添加sandbox属性增强安全性（根据需求调整） -->
+									sandbox="allow-scripts allow-same-origin allow-popups allow-orientation-lock">
+							</iframe>
 						</div>
-										
 					</div>
 					
 				<!-- Footer -->
@@ -85,10 +113,8 @@
 							<p>Dive into a fast-paced, action-packed stickman battle in War of Sticks—the ultimate casual fighting game for mobile! Choose your unique stick warrior, master lightning-fast combos, and clash against enemies in dynamic arenas.
 With intuitive one-touch controls, unleash devastating attacks, dodge incoming strikes, and dominate the battlefield. Collect powerful weapons, unlock legendary stickman skins, and upgrade your skills to become the top warrior. Challenge friends in real-time PvP battles or fight through thrilling single-player campaigns—every match is a test of speed and strategy!
 Featuring sleek 2D animations, vibrant battle effects, and endless replay value, War of Sticks delivers non-stop fun for players of all ages. Are you ready to grab your stick, fight for glory, and conquer the war? Download now and let the stickman showdown begin! </p>
-							
 						</section>
 						<section>
-							
 							<ul class="icons">
 								<li><a href="#" class="icon brands fa-twitter alt"><span class="label">Twitter</span></a></li>
 								<li><a href="#" class="icon brands fa-facebook-f alt"><span class="label">Facebook</span></a></li>
@@ -97,7 +123,6 @@ Featuring sleek 2D animations, vibrant battle effects, and endless replay value,
 								<li><a href="#" class="icon brands fa-dribbble alt"><span class="label">Dribbble</span></a></li>
 							</ul>
 						</section>
-						
 					</footer>
 
 			</div>
