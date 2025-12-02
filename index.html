@@ -15,13 +15,40 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 <style>
-  .center-iframe {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 800px; /* 或者你想要的任何宽度 */
-    height: 600px; /* 根据需要调整 */
+	
+  .iframe-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* 最大宽度 */
+    margin: 0 auto; /* 居中显示 */
+    padding-top: 75%; /* 4:3 比例 (height/width = 3/4 = 0.75) */
+    /* 如果游戏是16:9比例，使用56.25% (9/16 = 0.5625) */
   }
+  
+  .responsive-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  
+  /* 针对不同屏幕尺寸的微调 */
+  @media (max-width: 768px) {
+    .iframe-container {
+      padding-top: 80%; /* 在移动设备上稍作调整 */
+      padding-left: 2%;
+      padding-right: 2%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .iframe-container {
+      padding-top: 85%; /* 在小屏幕设备上进一步调整 */
+    }
+  }
+  
 </style>
 	</head>
 	<body class="is-preload">
@@ -41,14 +68,14 @@
 					
 
 				<!-- Main -->
-				 <main cLass="nax-w-7xL mx-auto px-4 py-6">
-					<div cLass="bg-white rounded-lg shadow-lg p-4 nb-8">
+				 <main class="max-w-7xl mx-auto px-4 py-6">
+					<div class="bg-white rounded-lg shadow-lg p-4 mb-8">
 						<div class="aspect-w-16 aspect-h-9">
-							<iframe class="center-iframe" src="warofsticks/index.html"
-							>
-							</iframe>
+							<div class="iframe-container">
+								<iframe class="responsive-iframe" src="warofsticks/index.html"></iframe>
+							</div>
 						</div>
-								
+										
 					</div>
 					
 				<!-- Footer -->
