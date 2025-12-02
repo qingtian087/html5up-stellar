@@ -8,7 +8,7 @@
 	<head>
 		<title>War of Sticks - Stickman Fighting Game | Play Online Action Game</title>
 		<meta charset="utf-8" />
-		<!-- Key: Add viewport meta tag for proper mobile adaptation -->
+		<!-- 关键：添加viewport确保移动端正确适配 -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<meta name="google-site-verification" content="Lt05fKBOZaasfbWBKGIsoHlynRDD2DnWa2gehOfnxBs" />
 		<meta name="keywords" content="War of Sticks, stickman game, fighting game, action game, online game, stickman fighting, PvP game, battle game">
@@ -16,15 +16,15 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 <style>
-  /* Base container style - Unified control for centering and width */
+  /* 基础容器样式 - 统一控制居中、宽度 */
   .iframe-container {
     position: relative;
     width: 100%;
-    margin: 0 auto; /* Horizontal centering */
-    overflow: hidden; /* Prevent content overflow */
+    margin: 0 auto; /* 水平居中 */
+    overflow: hidden; /* 防止内容溢出 */
   }
 
-  /* Core style for responsive iframe */
+  /* 响应式iframe核心样式 */
   .responsive-iframe {
     position: absolute;
     top: 0;
@@ -32,52 +32,52 @@
     width: 100%;
     height: 100%;
     border: 0;
-    /* Key: Make iframe content adapt to container (requires responsive inner page) */
+    /* 关键：让iframe内部内容自适应容器（需配合内部页面响应式） */
     transform: scale(1);
     transform-origin: top left;
   }
 
-  /* Desktop (width > 768px): Fixed 16:9 aspect ratio */
+  /* 电脑端（宽度>768px）：固定16:9比例 */
   @media (min-width: 769px) {
     .iframe-container {
-      max-width: 1200px; /* Maximum width for desktop, adjustable */
-      padding-top: 56.25%; /* 16:9 aspect ratio = 9/16 = 0.5625 */
+      max-width: 1200px; /* 电脑端最大宽度，可调整 */
+      padding-top: 56.25%; /* 16:9比例 = 9/16 = 0.5625 */
       padding-left: 2%;
       padding-right: 2%;
     }
   }
 
-  /* Tablet/large mobile (768px ≥ width > 480px): Transition ratio */
+  /* 平板/大屏手机（768px≥宽度>480px）：过渡比例 */
   @media (max-width: 768px) and (min-width: 481px) {
     .iframe-container {
-      padding-top: 75%; /* 4:3 aspect ratio, between 16:9 and portrait */
+      padding-top: 75%; /* 4:3比例，介于16:9和竖屏之间 */
       padding-left: 3%;
       padding-right: 3%;
     }
   }
 
-  /* Mobile (width ≤ 480px): Mobile portrait aspect ratio */
+  /* 手机端（宽度≤480px）：移动端竖屏比例 */
   @media (max-width: 480px) {
     .iframe-container {
-      padding-top: 177.78%; /* 9:16 portrait ratio = 16/9 ≈ 1.7778 (suitable for full mobile screen) */
+      padding-top: 177.78%; /* 9:16竖屏比例 = 16/9 ≈ 1.7778（适合手机全屏） */
       padding-left: 0;
       padding-right: 0;
-      max-width: 100%; /* Occupy full mobile screen width */
+      max-width: 100%; /* 占满手机屏幕宽度 */
     }
-    /* Optional: If inner page needs scaling adaptation, add the following style */
+    /* 可选：如果内部页面需要缩放适配，可添加以下样式 */
     .responsive-iframe {
-      /* If inner page is not responsive, fine-tune with scale (adjust value based on actual situation) */
+      /* 若内部页面未做响应式，可通过scale微调（根据实际情况调整数值） */
       /* transform: scale(0.95); */
     }
   }
 
-  /* Optimize main content spacing for mobile adaptation */
+  /* 优化主体内容间距，适配移动端 */
   main {
-    padding: 20px 15px; /* Add left/right padding for mobile to avoid edge贴合 */
+    padding: 20px 15px; /* 移动端增加左右内边距，避免贴边 */
   }
 
   .bg-white {
-    padding: 15px; /* Adjust card padding for small screens */
+    padding: 15px; /* 调整卡片内边距，适配小屏幕 */
   }
 </style>
 	</head>
@@ -90,17 +90,17 @@
 					<header id="header" class="alt">
 						<span class="logo"><img src="images/logo.svg" alt="" /></span>
 						<h1>War of Sticks</h1>
-						<p>Game of War</p> <!-- Fix extra blank space caused by redundant <br> in original code -->
+						<p>Game of War</p> <!-- 修复原代码多余的<br>导致的空白 -->
 					</header>
 
 				<!-- Main -->
 				<main>
 					<div class="bg-white rounded-lg shadow-lg p-4 mb-8">
-						<!-- Remove redundant aspect container, directly use iframe-container to control ratio -->
+						<!-- 移除多余的aspect容器，直接使用iframe-container控制比例 -->
 						<div class="iframe-container">
 							<iframe class="responsive-iframe" 
 									src="warofsticks/index.html"
-									<!-- Optional: Add sandbox attribute for enhanced security (adjust permissions as needed) -->
+									<!-- 可选：添加sandbox属性增强安全性（根据需求调整） -->
 									sandbox="allow-scripts allow-same-origin allow-popups allow-orientation-lock">
 							</iframe>
 						</div>
